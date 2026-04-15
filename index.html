@@ -7,22 +7,23 @@
     <title>One Thing Studios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg: #f6f8f5;
+            --bg: #edf5f1;
             --surface: #ffffff;
-            --surface-soft: #eef4f1;
-            --text: #152027;
-            --muted: #54626a;
-            --accent: #0f766e;
-            --accent-strong: #0b5f58;
-            --line: #d6dfdb;
+            --surface-soft: #e8f3ef;
+            --text: #0f1e26;
+            --muted: #4f636b;
+            --accent: #0e7a6d;
+            --accent-strong: #0a6258;
+            --accent-warm: #e98744;
+            --line: #cfe0da;
             --radius-lg: 22px;
             --radius-md: 14px;
             --max-width: 1120px;
-            --shadow: 0 18px 45px rgba(17, 31, 39, 0.08);
+            --shadow: 0 18px 45px rgba(12, 27, 35, 0.1);
         }
 
         * {
@@ -36,10 +37,11 @@
         }
 
         body {
-            font-family: "Manrope", "Segoe UI", sans-serif;
+            font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
             background:
-                radial-gradient(circle at 8% -10%, #d6f2ee 0, transparent 32%),
-                radial-gradient(circle at 100% 0%, #ffe5cf 0, transparent 24%),
+                radial-gradient(circle at 8% -10%, #d0eee8 0, transparent 32%),
+                radial-gradient(circle at 102% -3%, #ffe4c8 0, transparent 28%),
+                repeating-linear-gradient(90deg, rgba(12, 122, 109, 0.03) 0 1px, transparent 1px 140px),
                 var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -54,7 +56,7 @@
             border-bottom: 1px solid var(--line);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(120deg, #f3fffd 0%, #fff6ec 55%, #f3f7ff 100%);
+            background: linear-gradient(118deg, #effcf9 0%, #fff7ed 52%, #ebf4ff 100%);
         }
 
         header::before,
@@ -70,7 +72,7 @@
             height: 230px;
             right: -50px;
             top: -40px;
-            background: rgba(15, 118, 110, 0.12);
+            background: rgba(14, 122, 109, 0.14);
         }
 
         header::after {
@@ -78,7 +80,7 @@
             height: 180px;
             left: -60px;
             bottom: -50px;
-            background: rgba(251, 146, 60, 0.14);
+            background: rgba(233, 135, 68, 0.18);
         }
 
         .hero-inner {
@@ -88,27 +90,71 @@
             z-index: 1;
             display: grid;
             gap: 18px;
+            align-items: start;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-inner>* {
+            animation: riseIn 0.6s ease both;
+        }
+
+        .hero-inner>*:nth-child(2) {
+            animation-delay: 0.06s;
+        }
+
+        .hero-inner>*:nth-child(3) {
+            animation-delay: 0.12s;
+        }
+
+        .hero-inner>*:nth-child(4) {
+            animation-delay: 0.18s;
+        }
+
+        .hero-inner>*:nth-child(5) {
+            animation-delay: 0.24s;
         }
 
         .eyebrow {
-            font-size: 12px;
-            letter-spacing: 0.16em;
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(14, 122, 109, 0.28);
+            background: rgba(255, 255, 255, 0.7);
+            font-size: 0.74rem;
+            letter-spacing: 0.14em;
             font-weight: 800;
-            color: #22635f;
+            color: #1f6660;
         }
 
         h1 {
-            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            font-family: "Sora", "Segoe UI", sans-serif;
             font-size: clamp(2.3rem, 5vw, 4rem);
             line-height: 1.1;
             max-width: 720px;
             color: #102128;
+            background: linear-gradient(100deg, #0f2d37 5%, #0e7a6d 54%, #d97a3f 94%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-desc {
             color: var(--muted);
             font-size: clamp(1rem, 2.3vw, 1.2rem);
             max-width: 700px;
+            font-weight: 500;
         }
 
         .hero-tags {
@@ -121,11 +167,11 @@
             display: inline-flex;
             align-items: center;
             padding: 8px 14px;
-            border: 1px solid #bad4cc;
+            border: 1px solid #b5d2ca;
             border-radius: 999px;
             font-size: 0.92rem;
-            color: #30555b;
-            background: rgba(255, 255, 255, 0.72);
+            color: #30565d;
+            background: rgba(255, 255, 255, 0.85);
         }
 
         .hero-actions {
@@ -143,24 +189,28 @@
             border-radius: 999px;
             text-decoration: none;
             font-weight: 700;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
             color: #ffffff;
             border: 1px solid transparent;
-            transition: 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
         }
 
         .btn:hover {
-            background: var(--accent-strong);
+            transform: translateY(-1px);
+            filter: saturate(1.05);
+            box-shadow: 0 10px 22px rgba(14, 122, 109, 0.26);
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.88);
             color: var(--accent);
-            border-color: #8abeb8;
+            border-color: #9ac6bf;
         }
 
         .btn-secondary:hover {
-            background: #e6f4f2;
+            filter: none;
+            background: #e5f4f0;
+            box-shadow: none;
         }
 
         .section {
@@ -168,7 +218,7 @@
         }
 
         .section-soft {
-            background: rgba(255, 255, 255, 0.64);
+            background: linear-gradient(180deg, rgba(232, 243, 239, 0.75) 0%, rgba(255, 255, 255, 0.85) 100%);
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
@@ -179,7 +229,7 @@
         }
 
         h2 {
-            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            font-family: "Sora", "Segoe UI", sans-serif;
             font-size: clamp(1.7rem, 3vw, 2.4rem);
             line-height: 1.2;
             margin-bottom: 16px;
@@ -197,9 +247,65 @@
             max-width: 780px;
         }
 
+        .media {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #dbe8e3;
+        }
+
+        .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease, filter 0.45s ease;
+        }
+
+        .media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 30, 38, 0.05) 35%, rgba(15, 30, 38, 0.68) 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .media-caption {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            z-index: 1;
+        }
+
+        .media:hover img,
+        .media:focus-within img {
+            transform: scale(1.08);
+            filter: saturate(1.06);
+        }
+
+        .media:hover::after,
+        .media:focus-within::after {
+            opacity: 1;
+        }
+
+        .media:hover .media-caption,
+        .media:focus-within .media-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .about-grid {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
             align-items: start;
         }
@@ -213,29 +319,18 @@
             margin-top: 14px;
         }
 
-        .highlights {
+        .about-image {
             display: grid;
-            gap: 14px;
+            align-content: start;
         }
 
-        .highlight {
-            background: var(--surface);
+        .about-media {
+            height: 360px;
             border: 1px solid var(--line);
             border-radius: var(--radius-md);
-            padding: 18px;
-            box-shadow: 0 8px 18px rgba(17, 31, 39, 0.05);
-        }
-
-        .highlight strong {
-            display: block;
-            margin-bottom: 6px;
-            color: #18313b;
-            font-size: 1rem;
-        }
-
-        .highlight span {
-            color: var(--muted);
-            font-size: 0.95rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: riseIn 0.65s ease both;
         }
 
         .services {
@@ -254,6 +349,20 @@
             gap: 12px;
             min-height: 220px;
             transition: transform 0.22s ease, box-shadow 0.22s ease;
+            animation: riseIn 0.65s ease both;
+        }
+
+        .card-media {
+            height: 160px;
+            margin-bottom: 2px;
+        }
+
+        .services .card:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+
+        .services .card:nth-child(3) {
+            animation-delay: 0.16s;
         }
 
         .card:hover {
@@ -270,8 +379,8 @@
             justify-content: center;
             font-size: 0.82rem;
             font-weight: 800;
-            color: var(--accent);
-            background: #e4f2f0;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
         }
 
         .card h3 {
@@ -297,14 +406,27 @@
             padding: 18px;
             display: grid;
             gap: 10px;
+            animation: riseIn 0.65s ease both;
+        }
+
+        .process .step:nth-child(2) {
+            animation-delay: 0.05s;
+        }
+
+        .process .step:nth-child(3) {
+            animation-delay: 0.1s;
+        }
+
+        .process .step:nth-child(4) {
+            animation-delay: 0.15s;
         }
 
         .step-number {
             width: 28px;
             height: 28px;
             border-radius: 8px;
-            background: #ecf6f5;
-            color: #1d5d58;
+            background: #e4f4f0;
+            color: #1c665f;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -328,6 +450,7 @@
             border-radius: 24px;
             padding: 28px;
             box-shadow: var(--shadow);
+            animation: riseIn 0.7s ease both;
         }
 
         .contact-grid {
@@ -342,17 +465,33 @@
             margin: 14px 0 18px;
             display: grid;
             gap: 10px;
+            counter-reset: callstep;
+        }
+
+        .contact-callout {
+            margin-top: 14px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface-soft);
+        }
+
+        .contact-callout h3 {
+            font-size: 1rem;
+            color: #1e3a44;
+            margin-bottom: 10px;
         }
 
         .contact-points li {
             position: relative;
-            padding-left: 18px;
+            padding-left: 30px;
             color: var(--muted);
             font-size: 0.95rem;
+            counter-increment: callstep;
         }
 
         .contact-points li::before {
-            content: "+";
+            content: counter(callstep) ".";
             position: absolute;
             left: 0;
             top: 0;
@@ -405,8 +544,8 @@
 
         .contact-form input:focus,
         .contact-form textarea:focus {
-            outline: 2px solid rgba(15, 118, 110, 0.16);
-            border-color: #8dbeb8;
+            outline: 2px solid rgba(14, 122, 109, 0.2);
+            border-color: #86beb5;
         }
 
         .contact-form button {
@@ -417,13 +556,14 @@
             font: inherit;
             font-weight: 700;
             color: #fff;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
             cursor: pointer;
-            transition: 0.2s ease;
+            transition: transform 0.2s ease, filter 0.2s ease;
         }
 
         .contact-form button:hover {
-            background: var(--accent-strong);
+            transform: translateY(-1px);
+            filter: saturate(1.06);
         }
 
         .float-btn {
@@ -434,9 +574,13 @@
             border-radius: 999px;
             text-decoration: none;
             color: #fff;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent-strong), var(--accent));
             font-weight: 700;
-            box-shadow: 0 12px 24px rgba(15, 118, 110, 0.28);
+            box-shadow: 0 12px 24px rgba(14, 122, 109, 0.28);
+        }
+
+        .float-btn:hover {
+            filter: brightness(1.03);
         }
 
         footer {
@@ -448,6 +592,17 @@
             background: #f8faf9;
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
         @media (max-width: 920px) {
             header {
                 padding-top: 96px;
@@ -456,6 +611,10 @@
             .about-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .about-media {
+                height: 320px;
             }
         }
 
@@ -470,6 +629,11 @@
 
             .contact-wrap {
                 padding: 20px;
+            }
+
+            .about-media,
+            .card-media {
+                height: 210px;
             }
 
             .float-btn {
@@ -487,10 +651,10 @@
     <header>
         <div class="hero-inner">
             <p class="eyebrow">ONE THING STUDIOS</p>
-            <h1>Immersive digital products that customers remember.</h1>
+            <h1>We build AR, VR, and 3D solutions for businesses.</h1>
             <p class="hero-desc">
-                We design and build AR, VR, and interactive experiences for training,
-                marketing, and product storytelling.
+                We build AR/VR experiences, 3D models, and interactive demos for
+                marketing, training, and sales.
             </p>
 
             <div class="hero-tags">
@@ -510,28 +674,24 @@
             <div class="about-copy">
                 <h2>About</h2>
                 <p>
-                    One Thing Studios helps businesses move from rough concept to launch-ready immersive experience.
-                    We keep delivery practical, clear, and focused on outcomes.
+                    At One Thing Studios, we create AR/VR experiences, 3D content, and
+                    interactive demos that make ideas easy to understand.
                 </p>
                 <p>
-                    Whether you need a rapid prototype or full production build, we align design, 3D, and engineering
-                    into one workflow.
+                    We use AI-assisted workflows to speed up ideation and visual exploration,
+                    then refine every deliverable through hands-on design and production review.
+                </p>
+                <p>
+                    With 13+ years of experience in interactive development and games, we have
+                    worked with some of the best teams in the industry.
                 </p>
             </div>
 
-            <div class="highlights">
-                <div class="highlight">
-                    <strong>End-to-end delivery</strong>
-                    <span>Strategy, interaction design, 3D content, and deployment support.</span>
-                </div>
-                <div class="highlight">
-                    <strong>Business-focused execution</strong>
-                    <span>Built for training, onboarding, product demos, and customer engagement.</span>
-                </div>
-                <div class="highlight">
-                    <strong>Clear communication</strong>
-                    <span>Scoped milestones, transparent updates, and predictable timelines.</span>
-                </div>
+            <div class="about-image">
+                <figure class="media about-media">
+                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="One Thing Studios team collaborating on immersive product concepts">
+                    <figcaption class="media-caption">One team for strategy, design, 3D production, and launch support.</figcaption>
+                </figure>
             </div>
         </div>
     </section>
@@ -540,26 +700,38 @@
         <div class="section-inner">
             <div class="section-head">
                 <h2>Core Services</h2>
-                <p class="section-lead">Flexible support for quick pilots, production projects, and continuous improvements.</p>
+                <p class="section-lead">Flexible support for quick pilots, full production projects, and ongoing improvements.</p>
             </div>
 
             <div class="services">
                 <article class="card">
                     <span class="card-number">01</span>
+                    <figure class="media card-media">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1000&q=80" alt="Immersive AR and VR visual environment">
+                        <figcaption class="media-caption">Immersive demos for product and training</figcaption>
+                    </figure>
                     <h3>AR and VR Development</h3>
-                    <p>Immersive applications for training, simulation, virtual walkthroughs, and interactive storytelling.</p>
+                    <p>Experiences for training, simulations, virtual walkthroughs, and product showcases.</p>
                 </article>
 
                 <article class="card">
                     <span class="card-number">02</span>
+                    <figure class="media card-media">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80" alt="3D model render and design process">
+                        <figcaption class="media-caption">High-quality 3D assets optimized for performance</figcaption>
+                    </figure>
                     <h3>3D Modelling and Optimization</h3>
-                    <p>Production-ready models and assets designed for quality visuals and smooth runtime performance.</p>
+                    <p>Production-ready 3D assets with high visual quality and smooth runtime performance.</p>
                 </article>
 
                 <article class="card">
                     <span class="card-number">03</span>
+                    <figure class="media card-media">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" alt="Interactive digital dashboard and touch interface">
+                        <figcaption class="media-caption">Interactive tools tailored to business goals</figcaption>
+                    </figure>
                     <h3>Interactive Digital Solutions</h3>
-                    <p>Custom product demos, engagement tools, and web experiences tailored to your business goals.</p>
+                    <p>Custom digital demos and engagement tools tailored to your business goals.</p>
                 </article>
             </div>
         </div>
@@ -605,13 +777,17 @@
             <div class="contact-grid">
                 <div>
                     <h2>Contact</h2>
-                    <p class="section-lead">Share your project details and we will get back to you with next steps.</p>
+                    <p class="section-lead">Book a short discovery call and we will help you choose the right approach for your project.</p>
 
-                    <ul class="contact-points">
-                        <li>Best email and preferred way to reach you.</li>
-                        <li>Project goal, rough timeline, and expected deliverables.</li>
-                        <li>References or links that help us understand your idea faster.</li>
-                    </ul>
+                    <div class="contact-callout">
+                        <h3>What to expect in the call</h3>
+                        <ul class="contact-points">
+                            <li>A quick understanding of your goal, audience, and use case.</li>
+                            <li>Our recommendation: AR/VR, 3D assets, or interactive demo.</li>
+                            <li>A rough timeline and practical budget direction.</li>
+                            <li>Clear next steps after the call.</li>
+                        </ul>
+                    </div>
 
                     <p class="contact-direct">
                         Direct email: <a href="mailto:qquestreality@gmail.com">qquestreality@gmail.com</a>
@@ -630,8 +806,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Project Brief</label>
-                        <textarea id="message" placeholder="Tell us what you want to build..." required></textarea>
+                        <label for="message">What should we discuss?</label>
+                        <textarea id="message" placeholder="Share your project idea, goals, and timeline..." required></textarea>
                     </div>
 
                     <button type="submit">Send Message</button>
