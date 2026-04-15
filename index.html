@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Thing Studios</title>
 
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
     <style>
         * {
             margin: 0;
@@ -145,10 +142,24 @@
             text-align: center;
         }
 
-        .email {
-            margin-top: 20px;
-            color: #22d3ee;
-            font-weight: 600;
+        /* FORM */
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        form button {
+            width: 100%;
+            padding: 14px;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, #22d3ee, #a78bfa);
+            font-weight: 700;
+            cursor: pointer;
         }
 
         /* FLOAT BUTTON */
@@ -188,15 +199,10 @@
         <p class="location">Bangalore, India</p>
 
         <p class="hero-desc">
-            Book a <b>Free Consultation – AR/VR & 3D Solutions</b><br>
-            Pick a date & time and connect instantly.
+            Free Consultation – Pick a date & time and connect with us.
         </p>
 
-        <a href=""
-            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/qquestreality/free-consultation'});return false;"
-            class="btn">
-            Free Consultation
-        </a>
+        <a href="#contact" class="btn">Schedule a Call</a>
     </header>
 
     <!-- ABOUT -->
@@ -204,9 +210,8 @@
         <h2>About</h2>
 
         <p>
-            We help you build immersive experiences and powerful digital solutions.
-            From AR/VR applications to high-quality 3D modelling, we transform ideas
-            into visually stunning and scalable products.
+            We build immersive AR/VR experiences, high-quality 3D models, and
+            powerful digital solutions that help businesses stand out.
         </p>
 
         <img class="image-banner" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb">
@@ -221,19 +226,19 @@
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485">
                 <h3>AR / VR Development</h3>
-                <p>Immersive applications for training, simulation, and interactive experiences.</p>
+                <p>Immersive applications for training, simulation, and experiences.</p>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe">
                 <h3>3D Modelling</h3>
-                <p>High-quality 3D assets, environments, and product visualizations.</p>
+                <p>High-quality 3D assets and visualizations.</p>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31">
                 <h3>Interactive Solutions</h3>
-                <p>Custom digital tools designed for engagement and scalability.</p>
+                <p>Custom digital tools for engagement and growth.</p>
             </div>
 
         </div>
@@ -245,56 +250,76 @@
 
         <div class="process">
             <div class="step">
-                <h4>01. Understand</h4>
-                <p>Your idea & business goals</p>
+                <h4>01</h4>
+                <p>Understand your idea</p>
             </div>
             <div class="step">
-                <h4>02. Design</h4>
-                <p>Immersive experience concepts</p>
+                <h4>02</h4>
+                <p>Design experience</p>
             </div>
             <div class="step">
-                <h4>03. Build</h4>
-                <p>High-quality scalable solutions</p>
+                <h4>03</h4>
+                <p>Build solution</p>
             </div>
             <div class="step">
-                <h4>04. Deliver</h4>
-                <p>Launch ready product</p>
+                <h4>04</h4>
+                <p>Deliver product</p>
             </div>
         </div>
 
     </section>
 
     <!-- CONTACT -->
-    <section class="section contact">
-        <h2>Start Your Project</h2>
+    <section class="section contact" id="contact">
+        <h2>Schedule a Call</h2>
 
         <p>
-            Get a <b>Free Consultation</b>. Choose your time and we’ll connect with you
-            to discuss your idea and give direction.
+            Choose your preferred date and time, and we’ll connect with you.
         </p>
 
-        <br>
+        <form onsubmit="sendMail(event)" style="margin-top:30px; max-width:500px; margin:auto;">
 
-        <a href=""
-            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/qquestreality/free-consultation'});return false;"
-            class="btn">
-            Schedule a Call
-        </a>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <input type="date" id="date" required>
+            <input type="time" id="time" required>
 
-        <p class="email">qquestreality@gmail.com</p>
+            <textarea id="message" placeholder="Tell us about your project..."></textarea>
+
+            <button type="submit">Schedule Call</button>
+        </form>
+
     </section>
 
     <!-- FLOAT BUTTON -->
-    <a href=""
-        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/qquestreality/free-consultation'});return false;"
-        class="float-btn">
-        📅 Schedule Call
-    </a>
+    <a href="#contact" class="float-btn">📅 Schedule</a>
 
     <!-- FOOTER -->
     <footer>
         © 2026 One Thing Studios • Bangalore, India
     </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        function sendMail(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent("Call Booking Request");
+            const body = encodeURIComponent(
+                `New Call Request:\n\n` +
+                `Email: ${email}\n` +
+                `Preferred Date: ${date}\n` +
+                `Preferred Time: ${time}\n\n` +
+                `Project Details:\n${message}`
+            );
+
+            window.location.href = `mailto:qquestreality@gmail.com?subject=${subject}&body=${body}`;
+        }
+    </script>
 
 </body>
 
