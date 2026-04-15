@@ -142,6 +142,21 @@
             text-align: center;
         }
 
+        .contact form {
+            margin: 30px auto 0;
+            max-width: 500px;
+        }
+
+        .contact-direct {
+            margin-top: 18px;
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .contact-direct a {
+            color: #22d3ee;
+        }
+
         /* FORM */
         form input,
         form textarea {
@@ -199,10 +214,10 @@
         <p class="location">Bangalore, India</p>
 
         <p class="hero-desc">
-            Free Consultation – Pick a date & time and connect with us.
+            Free consultation. Send us a quick message and we will get back to you.
         </p>
 
-        <a href="#contact" class="btn">Schedule a Call</a>
+        <a href="#contact" class="btn">Contact Us</a>
     </header>
 
     <!-- ABOUT -->
@@ -271,27 +286,30 @@
 
     <!-- CONTACT -->
     <section class="section contact" id="contact">
-        <h2>Schedule a Call</h2>
+        <h2>Contact Us</h2>
 
         <p>
-            Choose your preferred date and time, and we’ll connect with you.
+            Tell us what you need. We will reply by email.
         </p>
 
-        <form onsubmit="sendMail(event)" style="margin-top:30px; max-width:500px; margin:auto;">
+        <form onsubmit="sendMail(event)">
 
+            <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Your Email" required>
-            <input type="date" id="date" required>
-            <input type="time" id="time" required>
+            <textarea id="message" placeholder="Tell us about your project..." required></textarea>
 
-            <textarea id="message" placeholder="Tell us about your project..."></textarea>
-
-            <button type="submit">Schedule Call</button>
+            <button type="submit">Send Message</button>
         </form>
+
+        <p class="contact-direct">
+            Or email us directly at
+            <a href="mailto:qquestreality@gmail.com">qquestreality@gmail.com</a>
+        </p>
 
     </section>
 
     <!-- FLOAT BUTTON -->
-    <a href="#contact" class="float-btn">📅 Schedule</a>
+    <a href="#contact" class="float-btn">Contact</a>
 
     <!-- FOOTER -->
     <footer>
@@ -303,18 +321,16 @@
         function sendMail(e) {
             e.preventDefault();
 
+            const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
             const message = document.getElementById('message').value;
 
-            const subject = encodeURIComponent("Call Booking Request");
+            const subject = encodeURIComponent("New Project Inquiry");
             const body = encodeURIComponent(
-                `New Call Request:\n\n` +
+                `New Contact Request:\n\n` +
+                `Name: ${name}\n` +
                 `Email: ${email}\n` +
-                `Preferred Date: ${date}\n` +
-                `Preferred Time: ${time}\n\n` +
-                `Project Details:\n${message}`
+                `Message:\n${message}`
             );
 
             window.location.href = `mailto:qquestreality@gmail.com?subject=${subject}&body=${body}`;
