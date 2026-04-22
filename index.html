@@ -213,6 +213,17 @@
             box-shadow: none;
         }
 
+        .btn-whatsapp-hero {
+            background: #25d366;
+            border-color: #25d366;
+            box-shadow: 0 12px 24px rgba(37, 211, 102, 0.35);
+        }
+
+        .btn-whatsapp-hero:hover {
+            filter: brightness(1.04);
+            box-shadow: 0 14px 28px rgba(37, 211, 102, 0.4);
+        }
+
         .section {
             padding: 74px 20px;
         }
@@ -476,6 +487,48 @@
             background: var(--surface-soft);
         }
 
+        .contact-whatsapp {
+            margin-top: 14px;
+            padding: 16px;
+            border: 1px solid #8fd9ad;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ecfff4 0%, #dcf9e9 100%);
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-whatsapp strong {
+            color: #155a37;
+            font-size: 1rem;
+        }
+
+        .contact-whatsapp span {
+            color: #2c5c43;
+            font-size: 0.94rem;
+        }
+
+        .whatsapp-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: #25d366;
+            color: #08351a;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 10px 22px rgba(37, 211, 102, 0.32);
+        }
+
+        .whatsapp-link-btn::before {
+            content: "💬";
+        }
+
+        .whatsapp-link-btn:hover {
+            filter: brightness(1.03);
+        }
+
         .contact-callout h3 {
             font-size: 1rem;
             color: #1e3a44;
@@ -566,10 +619,16 @@
             filter: saturate(1.06);
         }
 
-        .float-btn {
+        .float-stack {
             position: fixed;
             right: 24px;
             bottom: 24px;
+            display: grid;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .float-btn {
             padding: 12px 18px;
             border-radius: 999px;
             text-decoration: none;
@@ -577,6 +636,35 @@
             background: linear-gradient(135deg, var(--accent-strong), var(--accent));
             font-weight: 700;
             box-shadow: 0 12px 24px rgba(14, 122, 109, 0.28);
+            text-align: center;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55), 0 14px 30px rgba(37, 211, 102, 0.3);
+            }
+
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 14px 30px rgba(37, 211, 102, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 14px 30px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        .float-btn.whatsapp {
+            background: #25d366;
+            color: #08351a;
+            border: 2px solid #ffffff;
+            padding: 14px 22px;
+            font-size: 1rem;
+            font-weight: 800;
+            animation: whatsappPulse 1.8s infinite;
+        }
+
+        .float-btn.whatsapp::before {
+            content: "💬 ";
         }
 
         .float-btn:hover {
@@ -636,9 +724,12 @@
                 height: 210px;
             }
 
-            .float-btn {
+            .float-stack {
                 right: 14px;
                 bottom: 14px;
+            }
+
+            .float-btn {
                 padding: 10px 14px;
                 font-size: 0.9rem;
             }
@@ -659,12 +750,12 @@
 
             <div class="hero-tags">
                 <span class="tag">Bangalore, India</span>
-                <span class="tag">Replies within 24 hours</span>
+                <span class="tag">Replies within 6 hours</span>
             </div>
 
             <div class="hero-actions">
-                <a href="#contact" class="btn">Start a Project</a>
-                <a href="mailto:qquestreality@gmail.com" class="btn btn-secondary">Email Directly</a>
+                <a href="https://wa.me/918296951826?text=Hi%20One%20Thing%20Studios%2C%20I%20want%20to%20discuss%20a%20project." class="btn btn-whatsapp-hero" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+                <a href="#contact" class="btn btn-secondary">Request a Call</a>
             </div>
         </div>
     </header>
@@ -779,6 +870,12 @@
                     <h2>Contact</h2>
                     <p class="section-lead">Book a short discovery call and we will help you choose the right approach for your project.</p>
 
+                    <div class="contact-whatsapp">
+                        <strong>Prefer WhatsApp?</strong>
+                        <span>This is the fastest way to reach us. We usually reply within 6 hours.</span>
+                        <a href="https://wa.me/918296951826?text=Hi%20One%20Thing%20Studios%2C%20I%20want%20to%20discuss%20a%20project." class="whatsapp-link-btn" target="_blank" rel="noopener noreferrer">Start WhatsApp Chat</a>
+                    </div>
+
                     <div class="contact-callout">
                         <h3>What to expect in the call</h3>
                         <ul class="contact-points">
@@ -790,7 +887,8 @@
                     </div>
 
                     <p class="contact-direct">
-                        Direct email: <a href="mailto:qquestreality@gmail.com">qquestreality@gmail.com</a>
+                        Direct email: <a href="mailto:qquestreality@gmail.com">qquestreality@gmail.com</a><br>
+                        WhatsApp: <a href="https://wa.me/918296951826?text=Hi%20One%20Thing%20Studios%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">+91 82969 51826</a>
                     </p>
                 </div>
 
@@ -816,7 +914,9 @@
         </div>
     </section>
 
-    <a href="#contact" class="float-btn">Contact</a>
+    <div class="float-stack">
+        <a href="https://wa.me/918296951826?text=Hi%20One%20Thing%20Studios%2C%20I%20want%20to%20discuss%20a%20project." class="float-btn whatsapp" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+    </div>
 
     <footer>
         © 2026 One Thing Studios • Bangalore, India
